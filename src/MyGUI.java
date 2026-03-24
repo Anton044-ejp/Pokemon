@@ -116,7 +116,9 @@ public class MyGUI extends JFrame
         Pokemon p = pokerray[currentIndex];
         
         try {
-            URL url = new URL(p.getImagefile());
+        	URI uri = URI.create(p.getImagefile());  
+            URL url = uri.toURL(); 
+            
             Image image = ImageIO.read(url);
             Image scaled = image.getScaledInstance(175, 200, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(scaled));
